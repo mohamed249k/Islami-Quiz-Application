@@ -3,173 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مسابقة إسلامية - اختبر معلوماتك</title>
+    <title>اختبار المعلومات الإسلامية - مسابقة إسلامية تعليمية</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕌</text></svg>">
 </head>
 <body>
-    <div class="container">
-        <!-- Header with Islamic pattern -->
-        <header class="header">
-            <div class="islamic-pattern"></div>
-            <h1><i class="fas fa-mosque"></i> المسابقة الإسلامية</h1>
-            <p class="subtitle">اختبر معلوماتك الدينية وزد من ثقافتك الإسلامية</p>
-        </header>
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle" aria-label="تبديل وضع السطوع">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
 
-        <!-- Main content area -->
-        <main class="main-content">
-            <!-- Welcome Screen (Initial View) -->
-            <section id="welcome-screen" class="screen active">
-                <div class="welcome-card">
-                    <div class="welcome-icon">
-                        <i class="fas fa-book-quran"></i>
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Welcome Screen -->
+        <section id="welcomeScreen" class="screen active">
+            <div class="welcome-content">
+                <div class="welcome-header">
+                    <div class="islamic-decoration">
+                        <i class="fas fa-mosque"></i>
                     </div>
-                    <h2>مرحباً بك في مسابقتنا الإسلامية</h2>
-                    <p class="welcome-text">
-                        هذه المسابقة تهدف إلى اختبار معلوماتك في الثقافة الإسلامية وتقوية معرفتك الدينية. اختر مستوى الصعوبة وابدأ الاختبار. لديك 10 دقائق للإجابة على 20 سؤالاً.
-                    </p>
+                    <h1>مسابقة المعلومات الإسلامية</h1>
+                    <p class="subtitle">اختبر معلوماتك وتعلم معنا بطريقة تفاعلية</p>
+                </div>
+                
+                <div class="welcome-body">
+                    <div class="islamic-quote">
+                        <i class="fas fa-quote-right"></i>
+                        <p>"اطلبوا العلم من المهد إلى اللحد"</p>
+                        <p classquote-author">- حديث شريف</p>
+                    </div>
                     
-                    <div class="difficulty-cards">
-                        <div class="difficulty-card easy" data-level="easy">
-                            <div class="difficulty-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <h3>المستوى السهل</h3>
-                            <p>20 سؤالاً في أساسيات الإسلام</p>
-                            <div class="difficulty-badge">مبتدئ</div>
+                    <div class="features-list">
+                        <div class="feature">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>تعليم تفاعلي</h3>
+                            <p>تعلم حتى عند الإجابة الخاطئة</p>
                         </div>
-                        
-                        <div class="difficulty-card medium" data-level="medium">
-                            <div class="difficulty-icon">
-                                <i class="fas fa-tree"></i>
-                            </div>
-                            <h3>المستوى المتوسط</h3>
-                            <p>20 سؤالاً يحتاج معرفة متوسطة</p>
-                            <div class="difficulty-badge">متوسط</div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <h3>نظام الشارات</h3>
+                            <p>احصل على شارات تقديرية لإنجازاتك</p>
                         </div>
-                        
-                        <div class="difficulty-card hard" data-level="hard">
-                            <div class="difficulty-icon">
-                                <i class="fas fa-mountain"></i>
-                            </div>
-                            <h3>المستوى الصعب</h3>
-                            <p>20 سؤالاً للتحدي والاختبار العميق</p>
-                            <div class="difficulty-badge">متقدم</div>
+                        <div class="feature">
+                            <i class="fas fa-layer-group"></i>
+                            <h3>5 مستويات صعوبة</h3>
+                            <p>من المبتدئ إلى الخبير</p>
                         </div>
                     </div>
                     
-                    <button id="start-quiz-btn" class="btn-primary">
-                        ابدأ المسابقة <i class="fas fa-play-circle"></i>
+                    <button id="startQuizBtn" class="btn-primary">
+                        ابدأ الاختبار الآن
+                        <i class="fas fa-play"></i>
                     </button>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Quiz Screen -->
-            <section id="quiz-screen" class="screen">
-                <div class="quiz-header">
-                    <div class="quiz-info">
-                        <div class="level-display">
-                            <span id="current-level">سهل</span>
-                        </div>
-                        <div class="progress-info">
-                            <span id="question-counter">السؤال 1 من 20</span>
-                            <div class="progress-bar">
-                                <div id="progress-fill" class="progress-fill"></div>
-                            </div>
-                        </div>
+        <!-- Level Selection Screen -->
+        <section id="levelSelectionScreen" class="screen">
+            <div class="screen-header">
+                <h2>اختر مستوى الصعوبة</h2>
+                <p class="screen-description">اختر المستوى المناسب لقدراتك. كل مستوى يحتوي على 20 سؤالًا فريدًا.</p>
+                <button id="backToWelcome" class="btn-back">
+                    <i class="fas fa-arrow-right"></i> العودة للرئيسية
+                </button>
+            </div>
+            
+            <div class="levels-container">
+                <div class="level-card" data-level="1">
+                    <div class="level-icon">
+                        <i class="fas fa-seedling"></i>
                     </div>
-                    
-                    <div class="timer-container">
-                        <div class="timer">
-                            <i class="fas fa-clock"></i>
-                            <span id="timer">10:00</span>
-                        </div>
-                        <div class="timer-label">الوقت المتبقي</div>
+                    <h3>سهل جدًا</h3>
+                    <p>أسئلة أساسية للمبتدئين</p>
+                    <div class="level-info">
+                        <span><i class="fas fa-clock"></i> 30 ثانية للسؤال</span>
+                        <span><i class="fas fa-star"></i> 100 نقطة للسؤال</span>
+                    </div>
+                    <button class="btn-level">اختر هذا المستوى</button>
+                </div>
+                
+                <div class="level-card" data-level="2">
+                    <div class="level-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>سهل</h3>
+                    <p>أسئلة مناسبة للجميع</p>
+                    <div class="level-info">
+                        <span><i class="fas fa-clock"></i> 25 ثانية للسؤال</span>
+                        <span><i class="fas fa-star"></i> 150 نقطة للسؤال</span>
+                    </div>
+                    <button class="btn-level">اختر هذا المستوى</button>
+                </div>
+                
+                <div class="level-card" data-level="3">
+                    <div class="level-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>متوسط</h3>
+                    <p>يتطلب معرفة إسلامية أساسية</p>
+                    <div class="level-info">
+                        <span><i class="fas fa-clock"></i> 20 ثانية للسؤال</span>
+                        <span><i class="fas fa-star"></i> 200 نقطة للسؤال</span>
+                    </div>
+                    <button class="btn-level">اختر هذا المستوى</button>
+                </div>
+                
+                <div class="level-card" data-level="4">
+                    <div class="level-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>صعب</h3>
+                    <p>للذين لديهم معرفة متوسطة</p>
+                    <div class="level-info">
+                        <span><i class="fas fa-clock"></i> 15 ثانية للسؤال</span>
+                        <span><i class="fas fa-star"></i> 250 نقطة للسؤال</span>
+                    </div>
+                    <button class="btn-level">اختر هذا المستوى</button>
+                </div>
+                
+                <div class="level-card" data-level="5">
+                    <div class="level-icon">
+                        <i class="fas fa-volcano"></i>
+                    </div>
+                    <h3>صعب جدًا</h3>
+                    <p>تحدي للمتمكنين من العلوم الإسلامية</p>
+                    <div class="level-info">
+                        <span><i class="fas fa-clock"></i> 10 ثانية للسؤال</span>
+                        <span><i class="fas fa-star"></i> 300 نقطة للسؤال</span>
+                    </div>
+                    <button class="btn-level">اختر هذا المستوى</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="quiz-info">
+                    <div class="quiz-level">
+                        <i class="fas fa-layer-group"></i>
+                        <span id="currentLevel">سهل جدًا</span>
+                    </div>
+                    <div class="quiz-progress">
+                        <span id="currentQuestion">1</span> / <span id="totalQuestions">20</span>
+                    </div>
+                    <div class="quiz-score">
+                        <i class="fas fa-star"></i>
+                        <span id="currentScore">0</span> نقطة
                     </div>
                 </div>
                 
-                <div class="question-container">
-                    <h2 id="question-text">سؤال الاختبار يظهر هنا</h2>
-                    
-                    <div class="options-container">
-                        <!-- Options will be dynamically inserted here -->
+                <div class="timer-container">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">30</span> ثانية
                     </div>
-                    
-                    <div class="quiz-navigation">
-                        <button id="prev-question" class="btn-secondary" disabled>
-                            <i class="fas fa-arrow-right"></i> السابق
-                        </button>
-                        <button id="next-question" class="btn-primary">
-                            التالي <i class="fas fa-arrow-left"></i>
-                        </button>
-                        <button id="submit-quiz" class="btn-submit">
-                            إنهاء الاختبار <i class="fas fa-flag-checkered"></i>
-                        </button>
+                    <div class="timer-bar">
+                        <div id="timerBar" class="timer-bar-fill"></div>
                     </div>
                 </div>
-            </section>
+                
+                <button id="backToLevels" class="btn-back">
+                    <i class="fas fa-arrow-right"></i> العودة للمستويات
+                </button>
+            </div>
+            
+            <div class="quiz-body">
+                <div class="question-container">
+                    <h3 id="questionText">جاري تحميل السؤال...</h3>
+                </div>
+                
+                <div class="options-container">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button id="nextQuestionBtn" class="btn-primary" disabled>
+                        السؤال التالي
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-            <!-- Results Screen -->
-            <section id="results-screen" class="screen">
-                <div class="results-card">
-                    <div class="results-icon">
+        <!-- Results Screen -->
+        <section id="resultsScreen" class="screen">
+            <div class="results-container">
+                <div class="results-header">
+                    <div class="result-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <h2>نتيجة الاختبار</h2>
-                    
+                    <h2>أحسنت! لقد أكملت الاختبار</h2>
+                    <p>إليك نتائجك وتقييم أدائك</p>
+                </div>
+                
+                <div class="results-content">
                     <div class="score-display">
                         <div class="score-circle">
-                            <svg class="progress-ring" width="200" height="200">
-                                <circle class="progress-ring-circle" stroke="#2ecc71" stroke-width="12" fill="transparent" r="80" cx="100" cy="100"/>
-                            </svg>
-                            <div class="score-text">
-                                <span id="score-value">0</span>
-                                <span class="score-total">/ 20</span>
-                            </div>
+                            <span id="finalScore">0</span>/20
                         </div>
-                        
-                        <div class="score-details">
-                            <div class="score-detail">
-                                <span class="detail-label">النسبة المئوية</span>
-                                <span id="percentage" class="detail-value">0%</span>
-                            </div>
-                            <div class="score-detail">
-                                <span class="detail-label">المستوى</span>
-                                <span id="result-level" class="detail-value">سهل</span>
-                            </div>
-                            <div class="score-detail">
-                                <span class="detail-label">الوقت المستغرق</span>
-                                <span id="time-taken" class="detail-value">0:00</span>
-                            </div>
+                        <div class="score-percentage">
+                            <span id="percentage">0%</span>
+                            <p>النسبة المئوية</p>
                         </div>
                     </div>
                     
                     <div class="result-message">
-                        <h3 id="result-title">نتيجتك</h3>
-                        <p id="result-description">وصف النتيجة سيظهر هنا بناءً على أدائك</p>
+                        <h3 id="resultTitle">جاري حساب النتيجة...</h3>
+                        <p id="resultDescription">جاري تحليل إجاباتك...</p>
                     </div>
                     
-                    <div class="results-actions">
-                        <button id="restart-quiz" class="btn-primary">
-                            <i class="fas fa-redo"></i> إعادة الاختبار
+                    <div class="badges-earned">
+                        <h3><i class="fas fa-medal"></i> الشارات التي حصلت عليها</h3>
+                        <div id="badgesContainer" class="badges-container">
+                            <!-- Badges will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button id="restartQuizBtn" class="btn-primary">
+                            <i class="fas fa-redo"></i> اختبار جديد
                         </button>
-                        <button id="choose-level" class="btn-secondary">
+                        <button id="viewLevelsBtn" class="btn-secondary">
                             <i class="fas fa-layer-group"></i> اختيار مستوى آخر
                         </button>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>  من محمد كرم بهدف خدمة المجتمع الإسلامي • <span id="current-year"> 2026 </span> ©</p>
-            <div class="footer-pattern"></div>
-        </footer>
+        <!-- Badges Display -->
+        <div class="badges-modal" id="badgesModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-trophy"></i> نظام الشارات</h3>
+                    <button class="close-modal" id="closeBadgesModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="all-badges">
+                        <!-- All badges will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p > 2026 تم التطوير من محمد كرم وله حقوق النشر لخدمة المجتمع الاسلامى | مسابقة المعلومات الإسلامية</p>
+        <button id="showBadgesBtn" class="btn-badges">
+            <i class="fas fa-medal"></i> عرض جميع الشارات
+        </button>
+    </footer>
 
     <script src="script.js"></script>
 </body>
