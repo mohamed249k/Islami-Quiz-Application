@@ -84,7 +84,7 @@ body {
 
 /* Main Container */
 .app-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -287,7 +287,7 @@ body {
 
 .levels-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
@@ -300,6 +300,9 @@ body {
     box-shadow: var(--shadow);
     transition: var(--transition);
     border: 2px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .level-card:hover {
@@ -308,29 +311,39 @@ body {
 }
 
 .level-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
 .level-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--text-color);
     margin-bottom: 0.5rem;
+    min-height: 3rem;
 }
 
 .level-card p {
     color: var(--text-light);
     margin-bottom: 1rem;
     font-size: 0.95rem;
+    flex-grow: 1;
 }
 
 .level-info {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.5rem;
     font-size: 0.85rem;
     color: var(--text-light);
     margin-bottom: 1rem;
+}
+
+.level-info span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 /* Quiz Screen */
@@ -637,7 +650,7 @@ body {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
@@ -755,6 +768,18 @@ footer p {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .levels-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 992px) {
+    .levels-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     .welcome-header h1 {
         font-size: 2rem;
@@ -777,7 +802,7 @@ footer p {
     }
     
     .levels-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     
     .quiz-info {
@@ -830,7 +855,7 @@ footer p {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .app-container {
         padding: 10px;
     }
@@ -851,6 +876,10 @@ footer p {
         padding: 1rem;
     }
     
+    .levels-container {
+        grid-template-columns: 1fr;
+    }
+    
     .quiz-body, .results-container {
         padding: 1.5rem;
     }
@@ -863,5 +892,23 @@ footer p {
     
     .score-percentage span {
         font-size: 2.5rem;
+    }
+    
+    .all-badges {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .level-card {
+        padding: 1rem;
+    }
+    
+    .level-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .level-info {
+        font-size: 0.8rem;
     }
 }
